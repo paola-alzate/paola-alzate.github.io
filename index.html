@@ -1,95 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Document</title>
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+  />  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.js" integrity="sha512-1lagjLfnC1I0iqH9plHYIUq3vDMfjhZsLy9elfK89RBcpcRcx4l+kRJBSnHh2Mh6kLxRHoObD1M5UTUbgFy6nA==" crossorigin="anonymous"></script>
+  
 </head>
 <body>
-    <p>Botón modo test One page</p>
-<form>
-            <script src='https://epayco-checkout-testing.s3.amazonaws.com/checkout.preprod.js' 
-                data-epayco-key='dfd71c0e3c3b87901798e0a98ff44a0f' 
-                class='epayco-button'
-                data-epayco-invoice='' 
-                data-epayco-amount='5000' 
-                data-epayco-tax='0'
-                data-epayco-tax-base='0'
-                data-epayco-tax-ico='0'
-                data-epayco-name='On page' 
-                data-epayco-description='Checkout en modo test' 
-                data-epayco-currency='cop'   
-                data-epayco-country='CO'
-                data-epayco-test='true' 
-                data-epayco-external='false'
-                data-epayco-response='https://epayco.com/'  
-                data-epayco-confirmation='https://webhook.site/30c6051e-c81c-48a3-a7b9-02cc7d162474'
-                data-epayco-methodconfirmation="POST"
-                data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn5.png'> 
-            </script> 
-        </form> 
-        <p>Botón modo producción One page</p>
-        <form>
-            <script src='https://epayco-checkout-testing.s3.amazonaws.com/checkout.preprod.js' 
-                data-epayco-key='f7b11ab2b43d74e67b27195f29181559' 
-                data-epayco-invoice= ''
-                class='epayco-button' 
-                data-epayco-amount='2000' 
-                data-epayco-tax='0'
-                data-epayco-tax-base='0'
-                data-epayco-tax-ico='0'
-                data-epayco-name='Prueba Pre-producción' 
-                data-epayco-description='Checkout en modo producción' 
-                data-epayco-currency='cop'    
-                data-epayco-country='CO' 
-                data-epayco-test='false' 
-                data-epayco-external='false' 
-                data-epayco-response='https://epayco.com/'  
-                data-epayco-confirmation='https://webhook.site/6cc44896-76f1-4e27-9656-32c3d466d151'
-                data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn5.png'> 
-            </script> 
-        </form> 
+  <div class="container">
+    <button id="btn" type="button" class="btn btn-success">Checkout</button>
 
-        <p>Botón modo test Estándar</p>
-<form>
-            <script src='https://epayco-checkout-testing.s3.amazonaws.com/checkout.preprod.js' 
-                data-epayco-key='f7b11ab2b43d74e67b27195f29181559' 
-                class='epayco-button' 
-                data-epayco-invoice= ''
-                data-epayco-amount='5000' 
-                data-epayco-tax='0'
-                data-epayco-tax-base='0'
-                data-epayco-tax-ico='0'
-                data-epayco-name='Prueba Pre-producción' 
-                data-epayco-description='Café delete transacciones' 
-                data-epayco-currency='cop'    
-                data-epayco-country='CO' 
-                data-epayco-test='true' 
-                data-epayco-external='true' 
-                data-epayco-response='http://localhost/applications.html'  
-                data-epayco-confirmation='https://5269-181-53-47-148.ngrok.io'
-                data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn5.png'> 
-            </script> 
-        </form> 
-        <p>Botón modo producción Estándar</p>
-        <form>
-            <script src='https://epayco-checkout-testing.s3.amazonaws.com/checkout.preprod.js' 
-                data-epayco-key='f7b11ab2b43d74e67b27195f29181559' 
-                data-epayco-invoice= ''
-                class='epayco-button' 
-                data-epayco-amount='1500' 
-                data-epayco-tax='0'
-                data-epayco-tax-base='0'
-                data-epayco-tax-ico='0'
-                data-epayco-name='Prueba Pre-producción' 
-                data-epayco-description='Checkout en modo producción' 
-                data-epayco-currency='cop'    
-                data-epayco-test='false' 
-                data-epayco-external='true' 
-                data-epayco-response=''  
-                data-epayco-confirmation= 'https://5269-181-53-47-148.ngrok.io' 
-                data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn5.png'> 
-            </script> 
-        </form> 
-        </body>
+    
+    <script src="https://checkout.epayco.co/checkout.js"></script> 
+    
+    <script>
+      const handler = ePayco.checkout.configure({
+        key: "6f20bdfeb721ae83e332400e9cea7606",
+        test: false,
+      });
+
+      const data = {
+        name: "Vestido Mujer Primavera",
+        description: "Prueba en Producción",
+        invoice: "",
+        currency: "COP",
+        amount: "300.36",
+        tax_base: "0",
+        tax: "0",
+        country: "CO",
+        lang: "es",
+        methodsDisable: [],
+        external: "false",
+        response: "https://epayco.com/",
+        confirmation: "https://webhook.site/5c01c615-e0c0-4ac5-acb4-ebb482a27c1a",
+        method_confirmation:"POST",
+        email_billing: "",
+        name_billing: "",
+        address_billing: "Cra 28 # 48 - 100",
+        type_doc_billing: "CC",
+        number_doc_billing: "",
+        mobilephone_billing: "3012698686",
+        unique_transaction_per_bill:"true",
+        /*split_app_id: "30085", //Id de la cuenta principal
+            split_merchant_id: "30085", //Id de la cuenta principal y a nombre de quien quedara la transacción
+            split_type: "01", // tipo de dispersión 01 -> fija ---- 02 -> porcentual
+            split_primary_receiver: "30085", // Id de la cuenta principal - parámetro para recibir valor de la dispersión destinado
+            split_primary_receiver_fee: "0", // Parámetro no a utilizar pero que debe de ir en cero
+            splitpayment: "true", // Indicación de funcionalidad split
+            split_rule: "multiple", // Parámetro para configuración de Split_receivers - debe de ir por defecto en multiple
+            split_receivers: [ // array de recibidores entre los cuales se dispersara el dinero
+                { "id": "93006", "total": "3000", "iva": "", "base_iva": "", "fee": "1000" },
+                { "id": "515360", "total": "2000", "iva": "", "base_iva": "", "fee": "700" }
+                // { "id": "Id cliente recibidor", "total": "valor que recibira", "iva": "iva del valor a recibir", 
+                // "base_iva": "base iva del valor a recibir", "fee": "valor a enviar al split_merchant_id" }
+
+                /* NOTA: dentro del array split_receivers tambien es posible enviar un solo objeto para dispersión uno a uno
+                         tener en cuenta que la suma del parametro "total" entre todos los receivers debe de ser igual a la suma
+                         del todal de la transacción en el parámetro "amount" y que si esta se marca con iva los parámetros 
+                         respectivos dentro del objeto de cada recibidor tambien debe de llevar el iva 
+            ]*/
+        
+        
+      };
+            
+      $('#btn').on('click', function() {
+        handler.open(data);
+      })
+
+      /*handler.onCreated(function(response) {
+        alert("Al Cargar", JSON.stringify(response));
+      }).onResponse(function(response) {
+        alert("Al responder", JSON.stringify(response));
+      }).onClosed(function(response) {
+        alert("Al Cerrar", JSON.stringify(response));
+      });*/
+
+    </script>
+  </div>
+</body>
 </html>
