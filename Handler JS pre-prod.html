@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+  />  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.js" integrity="sha512-1lagjLfnC1I0iqH9plHYIUq3vDMfjhZsLy9elfK89RBcpcRcx4l+kRJBSnHh2Mh6kLxRHoObD1M5UTUbgFy6nA==" crossorigin="anonymous"></script>
+  
+</head>
+<body>
+  <div class="container">
+    <button id="btn" type="button" class="btn btn-success">Checkout</button>
+
+    <script src="https://epayco-checkout-testing.s3.amazonaws.com/checkout.preprod.js"></script> 
+    
+    <script>
+      const handler = ePayco.checkout.configure({
+        key: "221b0d733d5ef3cd35501473390c81ee",
+        test: false,
+      });
+
+      const data = {
+        name: "Vestido Mujer Primavera",
+        description: "Prueba en pre-producción",
+        invoice: "",
+        currency: "COP",
+        amount: "5000",
+        tax_base: "0",
+        tax: "0",
+        taxIco: "0",
+        country: "CO",
+        lang: "ES",
+        external: "false",
+        extras_epayco: {extra1:"Checkout",extra2:"PruebaQA 1"},
+        //extra8:"https://epayco-transactions-files.s3.amazonaws.com/3510ef82ef3adb38d70cc58b5ab89d38_613711_1700597002.pdf",
+        response: "dashboard.epayco.com/login",
+        confirmation: "https://webhook.site/378ee461-672b-4610-ad70-21e3053c50be",
+        method_confirmation:"POST",
+        email_billing: "litapao.1621@gmail.com",
+        name_billing: "Paola Alzate",
+        address_billing: "Cra 28 # 48 - 100",
+        type_doc_billing: "CC",
+        number_doc_billing: "1053814720",
+        mobilephone_billing: "3012698686",
+        unique_transaction_per_bill:"true",
+        /*split_app_id: "613806", //Id de la cuenta principal
+        split_merchant_id: "613806", //Id de la cuenta principal y a nombre de quien quedara la transacción
+        split_type: "01", // tipo de dispersión 01 -> fija ---- 02 -> porcentual
+        split_primary_receiver: "613806", // Id de la cuenta principal - parámetro para recibir valor de la dispersión destinado
+        split_primary_receiver_fee: "0", // Parámetro no a utilizar pero que debe de ir en cero
+        splitpayment: "true", // Indicación de funcionalidad split
+        split_rule: "multiple", // Parámetro para configuración de Split_receivers - debe de ir por defecto en multiple
+        split_receivers: [ // array de recibidores entre los cuales se dispersara el dinero
+          { "id": "613803", "total": "1000", "iva": "159.66", "base_iva": "840.34", "fee": "10" },
+          { "id": "613802", "total": "1500", "iva": "239.5", "base_iva": "1260.5", "fee": "10" }
+          //{ "id": "613806", "total": "16750.64", "iva": "", "base_iva": "", "fee": "0" },
+                // { "id": "Id cliente recibidor", "total": "valor que recibira", "iva": "iva del valor a recibir", 
+                // "base_iva": "base iva del valor a recibir", "fee": "valor a enviar al split_merchant_id" }
+
+                /* NOTA: dentro del array split_receivers tambien es posible enviar un solo objeto para dispersión uno a uno
+                         tener en cuenta que la suma del parametro "total" entre todos los receivers debe de ser igual a la suma
+                         del todal de la transacción en el parámetro "amount" y que si esta se marca con iva los parámetros 
+                         respectivos dentro del objeto de cada recibidor tambien debe de llevar el iva 
+        ]*/
+      };
+            
+      $('#btn').on('click', function() {
+        handler.open(data);
+      })
+
+      /*handler.onLoadTransactionId(function() {
+        alert("Al Cargar");
+      });*/
+
+      /*handler.onCreatedTransactionId(function() {
+        alert("Al crear");
+      });*/
+
+
+      /*handler.onCreated(function(response) {
+        alert("Al Cargar", JSON.stringify(response));
+      }).onResponse(function(response) {
+        alert("Al responder", JSON.stringify(response));
+      }).onClosed(function(response) {
+        alert("Al Cerrar", JSON.stringify(response));
+      });*/
+
+    </script>
+  </div>
+</body>
+</html>
